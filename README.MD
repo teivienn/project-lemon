@@ -3,7 +3,7 @@
 ## Setup
 
 - instal yarn
-- close repo
+- clone repo
 - install node_modules
 - yarn start
 
