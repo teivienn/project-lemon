@@ -1,4 +1,4 @@
-# Project Lemone
+# Project Lemon
 
 ## Setup
 
