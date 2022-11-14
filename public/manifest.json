@@ -1,11 +1,11 @@
 {
   "name": "PROFICARLINE",
   "short_name": "PROFICARLINE",
-  "theme_color": "#000000",
+  "theme_color": "#fafafa",
   "background_color": "#fafafa",
   "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
+  "scope": "./",
+  "start_url": "./",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
