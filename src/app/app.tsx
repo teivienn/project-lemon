@@ -1,9 +1,9 @@
 import { Prepare } from './prepare';
 
-import { Test } from '../modules/Test';
+import { RootNavigator } from '../navigation/navigators';
 
 export const App = () => (
   <Prepare>
-    <Test />
+    <RootNavigator />
   </Prepare>
 );
