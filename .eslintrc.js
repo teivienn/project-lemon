@@ -62,5 +62,10 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'import/no-default-export': 'error',
     'react/display-name': 'off',
+    'no-useless-return': 'off',
+    'consistent-return': 'off',
+    '@typescript-eslint/no-shadow': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
 };

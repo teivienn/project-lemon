@@ -1,0 +1,1 @@
+type Optional = null | undefined;

@@ -1,6 +1,9 @@
 import { Navbar, Text, Link } from '@nextui-org/react';
 import { useTranslation } from 'react-i18next';
 import { Icons } from '../../../assets';
+import { AuthGate } from '../../../components';
+import { Login } from './login';
+import { UserMenu } from './UserMenu';
 
 const collapseItems = [
   {
@@ -37,6 +40,10 @@ export const Header = () => {
         <Navbar.Link href="#">Pricing</Navbar.Link>
         <Navbar.Link href="#">Company</Navbar.Link>
       </Navbar.Content>
+
+      <AuthGate fallback={<Login />}>
+        <UserMenu />
+      </AuthGate>
       <Navbar.Collapse>
         {collapseItems.map((item, index) => (
           <Navbar.CollapseItem

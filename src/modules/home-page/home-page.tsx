@@ -1,1 +1,3 @@
-export const HomePage = () => null;
+export const HomePage = () => {
+  return null;
+};

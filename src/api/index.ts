@@ -1,1 +1,5 @@
-export const test = '';
+import { profile } from './profile';
+
+export const api = {
+  profile,
+};
