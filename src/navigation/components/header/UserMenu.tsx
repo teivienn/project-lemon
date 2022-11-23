@@ -35,7 +35,7 @@ export const UserMenu = () => {
       ...[
         profile?.admin ? <Dropdown.Item key="admin">Админ Панель</Dropdown.Item> : null,
       ],
-      <Dropdown.Item key="settings">Рудактировать Профиль</Dropdown.Item>,
+      <Dropdown.Item key="settings">Редактировать Профиль</Dropdown.Item>,
       <Dropdown.Item key="logout" withDivider color="error">
         Выйти
       </Dropdown.Item>,

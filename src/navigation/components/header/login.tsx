@@ -36,6 +36,46 @@ export const Login = () => {
             supabaseClient={supabase}
             appearance={{
               theme: ThemeSupa,
+              style: {
+                button: {
+                  background: '#0072f5',
+                  color: 'white',
+                  border: 0,
+                  borderRadius: 10,
+                },
+              },
+            }}
+            localization={{
+              variables: {
+                sign_in: {
+                  email_label: 'Email',
+                  password_label: 'Пароль',
+                  button_label: 'Войти',
+                  email_input_placeholder: '',
+                  password_input_placeholder: '',
+                  link_text: 'Войти',
+                },
+                sign_up: {
+                  email_label: 'Email',
+                  password_label: 'Пароль',
+                  button_label: 'Зарегестрироваться',
+                  email_input_placeholder: '',
+                  password_input_placeholder: '',
+                  link_text: 'Зарегестрироваться',
+                },
+                forgotten_password: {
+                  email_label: 'Email',
+                  password_label: 'Пароль',
+                  email_input_placeholder: '',
+                  button_label: 'Продолжить',
+                  link_text: 'Забыли пароль?',
+                },
+                update_password: {
+                  password_label: 'Пароль',
+                  password_input_placeholder: '',
+                  button_label: 'Продолжить',
+                },
+              },
             }}
           />
         </Modal.Body>
