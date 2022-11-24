@@ -1,24 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
-import { Card, Container, Text, Loading, Grid } from '@nextui-org/react';
+import { Container, Text, Loading } from '@nextui-org/react';
 import { api } from '../../api';
 import { Box } from '../../components/helpers';
-
-export const Card1 = (props: any) => (
-  <Card isPressable css={{ width: 340, minWidth: 420 }}>
-    <Card.Header>
-      <Text h4>{props.name}</Text>
-    </Card.Header>
-    <Card.Body css={{ p: 0 }}>
-      <Card.Image
-        src={props.picture}
-        objectFit="cover"
-        width="100%"
-        height={340}
-        alt="Card image background"
-      />
-    </Card.Body>
-  </Card>
-);
+import './style.css';
+import { ServiceCard } from '../../components/ServiceCard/ServiceCard';
 
 export const ServicesPage = () => {
   const { data, isLoading } = useQuery({
@@ -35,14 +20,15 @@ export const ServicesPage = () => {
   }
 
   return (
-    <Container justify="center">
-      <Grid.Container gap={2} justify="flex-start">
+    <Container md gap={2} justify="center" alignItems="center">
+      <Text h4 css={{ paddingTop: 20 }}>
+        Услуги
+      </Text>
+      <Box display="flex" justifyContent="flex-start" flexWrap="wrap">
         {data?.map((item) => (
-          <Grid key={item.id}>
-            <Card1 {...item} />
-          </Grid>
+          <ServiceCard key={item.id} {...item} />
         ))}
-      </Grid.Container>
+      </Box>
     </Container>
   );
 };
