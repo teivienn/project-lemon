@@ -6,21 +6,6 @@ import { UpdateProfileNotify } from '../../../components/UpdateProfileNotify';
 import { Login } from './login';
 import { UserMenu } from './UserMenu';
 
-const collapseItems = [
-  {
-    name: 'home',
-  },
-  {
-    name: 'catalog',
-  },
-  {
-    name: 'contacts',
-  },
-  {
-    name: 'services',
-  },
-];
-
 export const Header = () => {
   const { t } = useTranslation();
 
@@ -38,35 +23,12 @@ export const Header = () => {
           <Navbar.Link href="/">Главная</Navbar.Link>
           <Navbar.Link href="#">Каталог</Navbar.Link>
           <Navbar.Link href="#">Компания</Navbar.Link>
-          <Navbar.Link href="/services">Услуги</Navbar.Link>
           <Navbar.Link href="#">Контакты</Navbar.Link>
         </Navbar.Content>
 
         <AuthGate fallback={<Login />}>
           <UserMenu />
         </AuthGate>
-        <Navbar.Collapse>
-          {collapseItems.map((item, index) => (
-            <Navbar.CollapseItem
-              key={item.name}
-              activeColor="warning"
-              css={{
-                color: index === collapseItems.length - 1 ? '$error' : '',
-              }}
-              isActive={index === 2}
-            >
-              <Link
-                color="inherit"
-                css={{
-                  minWidth: '100%',
-                }}
-                href="#"
-              >
-                {item.name}
-              </Link>
-            </Navbar.CollapseItem>
-          ))}
-        </Navbar.Collapse>
       </Navbar>
 
       <UpdateProfileNotify />
