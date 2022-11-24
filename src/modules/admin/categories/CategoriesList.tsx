@@ -34,21 +34,21 @@ export const IconButton = styled('button', {
 
 const columns = [
   { name: 'Превью', uid: 'picture' },
-  { name: 'Заголовок', uid: 'name' },
+  { name: 'название', uid: 'name' },
   { name: 'Действия', uid: 'actions' },
 ];
 
-export const ListServices = () => {
+export const CategoriesList = () => {
   const client = useQueryClient();
 
   const { data, isLoading } = useQuery({
-    queryKey: ['services'],
-    queryFn: api.services.getAll,
+    queryKey: ['categories'],
+    queryFn: api.categories.getAll,
   });
 
   const { mutate } = useMutation({
-    mutationFn: async (id: string) => api.services.delete(id),
-    onSuccess: () => client.invalidateQueries({ queryKey: ['services'] }),
+    mutationFn: async (id: string) => api.categories.delete(id),
+    onSuccess: () => client.invalidateQueries({ queryKey: ['categories'] }),
   });
 
   const renderCell = (service: any, columnKey: any) => {

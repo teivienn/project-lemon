@@ -1,14 +1,5 @@
 /* eslint-disable no-promise-executor-return */
-import {
-  Col,
-  Loading,
-  Row,
-  Text,
-  Tooltip,
-  Table,
-  Avatar,
-  styled,
-} from '@nextui-org/react';
+import { Col, Loading, Row, Text, Tooltip, Table, styled } from '@nextui-org/react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { FiTrash2, FiEdit3 } from 'react-icons/fi';
 import { api } from '../../../api';
@@ -33,22 +24,22 @@ export const IconButton = styled('button', {
 });
 
 const columns = [
-  { name: 'Превью', uid: 'picture' },
-  { name: 'Заголовок', uid: 'name' },
+  { name: 'название', uid: 'name' },
+  { name: 'Родительская-Категория', uid: 'сategory' },
   { name: 'Действия', uid: 'actions' },
 ];
 
-export const ListServices = () => {
+export const SubCategoriesList = () => {
   const client = useQueryClient();
 
   const { data, isLoading } = useQuery({
-    queryKey: ['services'],
-    queryFn: api.services.getAll,
+    queryKey: ['subCategories'],
+    queryFn: api.subCategories.getAll,
   });
 
   const { mutate } = useMutation({
-    mutationFn: async (id: string) => api.services.delete(id),
-    onSuccess: () => client.invalidateQueries({ queryKey: ['services'] }),
+    mutationFn: async (id: string) => api.subCategories.delete(id),
+    onSuccess: () => client.invalidateQueries({ queryKey: ['subCategories'] }),
   });
 
   const renderCell = (service: any, columnKey: any) => {
@@ -60,8 +51,12 @@ export const ListServices = () => {
             <Text>{service.name}</Text>
           </Box>
         );
-      case 'picture':
-        return <Avatar src={service.picture} />;
+      case 'сategory':
+        return (
+          <Box width={100}>
+            <Text>{service.categories.name}</Text>
+          </Box>
+        );
       case 'actions':
         return (
           <Row justify="flex-end" align="center">

@@ -1,16 +1,15 @@
 import { Modal, useModal, Text } from '@nextui-org/react';
 import { AddHeader } from '../component/AddHeader';
-import { AddServicesBody } from './AddServicesBody';
+import { AddCategoriesBody } from './AddCategoriesBody';
 
-export const AddServices = () => {
+export const AddCategories = () => {
   const { setVisible, bindings } = useModal();
 
   return (
     <>
-      <AddHeader title="услуги" buttonText="добавить" click={() => setVisible(true)} />
+      <AddHeader title="Категории" buttonText="добавить" click={() => setVisible(true)} />
       <Modal
         scroll
-        fullScreen
         closeButton
         aria-labelledby="modal-title"
         aria-describedby="modal-description"
@@ -18,10 +17,10 @@ export const AddServices = () => {
       >
         <Modal.Header>
           <Text id="modal-title" size={18}>
-            Добавить услугу
+            Добавить категорию
           </Text>
         </Modal.Header>
-        <AddServicesBody close={() => setVisible(false)} />
+        <AddCategoriesBody close={() => setVisible(false)} />
       </Modal>
     </>
   );
