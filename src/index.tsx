@@ -2,6 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import * as serviceWorkerRegistration from './serviceWorkerRegistration';
 import { App } from './app';
+import 'draft-js/dist/Draft.css';
+import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 

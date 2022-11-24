@@ -26,7 +26,7 @@ export const Header = () => {
 
   return (
     <>
-      <Navbar variant="floating" isCompact>
+      <Navbar variant="floating" isCompact style={{ zIndex: 999 }}>
         <Navbar.Toggle showIn="xs" />
         <Navbar.Brand>
           <Icons.Logo />
@@ -35,12 +35,11 @@ export const Header = () => {
           </Text>
         </Navbar.Brand>
         <Navbar.Content hideIn="xs">
-          <Navbar.Link href="#">Features</Navbar.Link>
-          <Navbar.Link isActive href="#">
-            Customers
-          </Navbar.Link>
-          <Navbar.Link href="#">Pricing</Navbar.Link>
-          <Navbar.Link href="#">Company</Navbar.Link>
+          <Navbar.Link href="/">Главная</Navbar.Link>
+          <Navbar.Link href="#">Каталог</Navbar.Link>
+          <Navbar.Link href="#">Компания</Navbar.Link>
+          <Navbar.Link href="#">Услуги</Navbar.Link>
+          <Navbar.Link href="#">Контакты</Navbar.Link>
         </Navbar.Content>
 
         <AuthGate fallback={<Login />}>

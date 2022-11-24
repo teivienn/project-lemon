@@ -24,6 +24,10 @@ export const UserMenu = () => {
         navigate('/profile');
         break;
       }
+      case 'admin': {
+        navigate('/admin');
+        break;
+      }
       default: {
         break;
       }
