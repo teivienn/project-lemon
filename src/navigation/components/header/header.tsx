@@ -38,7 +38,7 @@ export const Header = () => {
           <Navbar.Link href="/">Главная</Navbar.Link>
           <Navbar.Link href="#">Каталог</Navbar.Link>
           <Navbar.Link href="#">Компания</Navbar.Link>
-          <Navbar.Link href="#">Услуги</Navbar.Link>
+          <Navbar.Link href="/services">Услуги</Navbar.Link>
           <Navbar.Link href="#">Контакты</Navbar.Link>
         </Navbar.Content>
 

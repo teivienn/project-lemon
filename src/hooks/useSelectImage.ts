@@ -22,7 +22,7 @@ export const useSelectImage = ({
       const file = files?.[0];
 
       if (file) {
-        Resizer.imageFileResizer(file, maxWidth, maxHeight, 'JPEG', 80, 0, (image) => {
+        Resizer.imageFileResizer(file, maxWidth, maxHeight, 'JPEG', 90, 0, (image) => {
           onSuccess(image as unknown as string);
         });
       }

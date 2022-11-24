@@ -15,8 +15,8 @@ export const AddServicesBody = ({ close }: any) => {
   const [editorState, onChange] = useState(() => EditorState.createEmpty());
 
   const { getInputProps, getRootProps } = useSelectImage({
-    maxHeight: 500,
-    maxWidth: 500,
+    maxHeight: 800,
+    maxWidth: 900,
     onSuccess: (image) => setImage(image),
   });
 
