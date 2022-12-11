@@ -58,10 +58,10 @@ export const Login = () => {
                 sign_up: {
                   email_label: 'Email',
                   password_label: 'Пароль',
-                  button_label: 'Зарегестрироваться',
+                  button_label: 'Зарегистрироваться',
                   email_input_placeholder: '',
                   password_input_placeholder: '',
-                  link_text: 'Зарегестрироваться',
+                  link_text: 'Зарегистрироваться',
                 },
                 forgotten_password: {
                   email_label: 'Email',
