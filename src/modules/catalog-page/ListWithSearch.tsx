@@ -15,7 +15,7 @@ export const ListWithSearch = () => {
 
   const { data, isLoading } = useQuery({
     queryKey: ['catalog', search, selectedCategoryIdValue, selectedSubCategoryIdValue],
-    queryFn: async () => api.catalog.getAll(search, selectedCategoryIdValue, selectedSubCategoryIdValue),
+    queryFn: async () => api.catalog.getAll(search, selectedCategoryIdValue, selectedSubCategoryIdValue, false),
   });
 
   console.log(data, 'data')

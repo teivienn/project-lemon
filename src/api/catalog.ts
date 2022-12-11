@@ -3,9 +3,13 @@ import { isEmpty } from 'lodash';
 import uuidv4 from 'uuidv4';
 
 export const catalog = {
-  getAll: async (search?: string, categoryId?: string, subCategoryId?: string) => {
+  getAll: async (search?: string, categoryId?: string, subCategoryId?: string, isDelete?: boolean) => {
     const query = supabase.from('catalog')
       .select('*')
+
+    if(isDelete !== undefined) {
+      query.eq('isDelete', isDelete)
+    }
 
     if(!isEmpty(search)) {
       query.like('name', `%${search}%`)
@@ -37,7 +41,17 @@ export const catalog = {
       price,
     })
   },
+  update: async (name: string, picture: string, content, price, categoryId, subCategoryId, id: string) => {
+    return supabase.from('catalog').update({
+      name,
+      picture,
+      content,
+      categoryId,
+      subCategoryId,
+      price,
+    }).eq('id', id);
+  },
   delete: async (id) => {
-    return supabase.from('catalog').delete().eq('id', id)
+    return supabase.from('catalog').update({ isDelete: true }).eq('id', id)
   }
 }
