@@ -18,6 +18,16 @@ export const services = {
       id: uuidv4(),
     });
   },
+  update: async (id: string, name: string, picture: string, content: string) => {
+    return supabase
+      .from('services')
+      .update({
+        name,
+        picture,
+        content,
+      })
+      .eq('id', id);
+  },
   delete: async (id: string) => {
     return supabase.from('services').delete().eq('id', id);
   },

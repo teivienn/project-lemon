@@ -1,8 +1,8 @@
 import { Button, Dropdown, Input, Loading, Modal } from '@nextui-org/react';
 import { useMemo, useState } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { Box } from '../../../components/helpers';
-import { api } from '../../../api';
+import { Box } from '~/components/helpers';
+import { api } from '~/api';
 
 export const AddSubCategoriesBody = ({ close }: any) => {
   const { data } = useQuery({

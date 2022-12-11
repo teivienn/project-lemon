@@ -5,6 +5,7 @@ import { useStore } from '../../lib/store';
 import { Services } from './services';
 import { Categories } from './categories';
 import { SubCategories } from './subCategories';
+import { Catalog } from '~/modules/admin/catalog/Catalog';
 
 export const AdminPage = () => {
   const navigate = useNavigate();
@@ -42,6 +43,11 @@ export const AdminPage = () => {
         <Button flat color="warning" onClick={() => navigate('./sub-categories')}>
           Под-Категории
         </Button>
+        <Spacer y={0.4} />
+
+        <Button flat color="warning" onClick={() => navigate('./catalog')}>
+          Каталог
+        </Button>
       </Box>
       <Box width="100%" pt={20} pr={20}>
         <Routes>
@@ -63,6 +69,7 @@ export const AdminPage = () => {
           <Route index path="services" element={<Services />} />
           <Route index path="categories" element={<Categories />} />
           <Route index path="sub-categories" element={<SubCategories />} />
+          <Route index path="catalog" element={<Catalog />} />
         </Routes>
       </Box>
     </Box>

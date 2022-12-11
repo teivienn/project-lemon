@@ -1,59 +1,28 @@
-/* eslint-disable no-promise-executor-return */
+import { useQuery } from '@tanstack/react-query';
+import { api } from '~/api';
 import {
+  Avatar,
   Col,
   Loading,
   Row,
-  Text,
-  Tooltip,
   Table,
-  Avatar,
-  styled,
-  useModal,
+  Text,
+  Tooltip
 } from '@nextui-org/react';
-import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { FiTrash2, FiEdit3 } from 'react-icons/fi';
-import { api } from '~/api';
 import { Box } from '~/components/helpers';
-import { EditService } from './EditService';
-import { useState } from 'react';
-
-// IconButton component will be available as part of the core library soon
-export const IconButton = styled('button', {
-  'dflex': 'center',
-  'border': 'none',
-  'outline': 'none',
-  'cursor': 'pointer',
-  'padding': '0',
-  'margin': '0',
-  'bg': 'transparent',
-  'transition': '$default',
-  '&:hover': {
-    opacity: '0.8',
-  },
-  '&:active': {
-    opacity: '0.6',
-  },
-});
+import { FiEdit3, FiTrash2 } from 'react-icons/fi';
+import { IconButton } from '~/modules/admin/services/ListServices';
 
 const columns = [
   { name: 'Превью', uid: 'picture' },
-  { name: 'Заголовок', uid: 'name' },
+  { name: 'название', uid: 'name' },
+  { name: 'Цена', uid: 'price' },
   { name: 'Действия', uid: 'actions' },
 ];
-
-export const ListServices = () => {
-  const [servi, setServi] = useState<any>(null);
-  const { bindings, setVisible } = useModal();
-  const client = useQueryClient();
-
+export const CatalogList = () => {
   const { data, isLoading } = useQuery({
-    queryKey: ['services'],
-    queryFn: api.services.getAll,
-  });
-
-  const { mutate } = useMutation({
-    mutationFn: async (id: string) => api.services.delete(id),
-    onSuccess: () => client.invalidateQueries({ queryKey: ['services'] }),
+    queryKey: ['catalog'],
+    queryFn: async () => api.catalog.getAll(),
   });
 
   const renderCell = (service: any, columnKey: any) => {
@@ -65,6 +34,12 @@ export const ListServices = () => {
             <Text>{service.name}</Text>
           </Box>
         );
+      case 'price':
+        return (
+          <Box width={100}>
+            <Text>{service.price}</Text>
+          </Box>
+        );
       case 'picture':
         return <Avatar src={service.picture} />;
       case 'actions':
@@ -73,7 +48,7 @@ export const ListServices = () => {
             <Col style={{ width: 50 }}>
               <Tooltip
                 content="Edit"
-                onClick={() => [setServi(service), setVisible(true)]}
+                onClick={() => []}
               >
                 <IconButton>
                   <FiEdit3 size={20} color="#979797" />
@@ -81,7 +56,7 @@ export const ListServices = () => {
               </Tooltip>
             </Col>
             <Col style={{ width: 50 }}>
-              <Tooltip content="Delete" color="error" onClick={() => mutate(service.id)}>
+              <Tooltip content="Delete" color="error" onClick={() => []}>
                 <IconButton>
                   <FiTrash2 size={20} color="#FF0080" />
                 </IconButton>
@@ -121,11 +96,6 @@ export const ListServices = () => {
           </Table.Body>
         </Table>
       </Box>
-      <EditService
-        bindings={bindings}
-        servi={servi}
-        onClose={() => [setVisible(false), setServi(null)]}
-      />
     </>
   );
 };

@@ -7,6 +7,7 @@ import { ClientProvider } from '../lib/client';
 
 import { LocalizationProvider } from '../lib/localization';
 import { StoreProvider } from '../lib/store';
+import { BucketProvider } from '~/lib/Bucket/BucketProvider';
 
 export const Prepare = ({ children }: PropsWithChildren) => (
   <Compose
@@ -16,6 +17,7 @@ export const Prepare = ({ children }: PropsWithChildren) => (
       LocalizationProvider,
       ClientProvider,
       StoreProvider,
+      BucketProvider,
     ]}
   >
     {children}

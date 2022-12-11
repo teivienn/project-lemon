@@ -21,9 +21,9 @@ export const Header = () => {
         </Navbar.Brand>
         <Navbar.Content hideIn="xs">
           <Navbar.Link href="/">Главная</Navbar.Link>
-          <Navbar.Link href="#">Каталог</Navbar.Link>
-          <Navbar.Link href="#">Компания</Navbar.Link>
-          <Navbar.Link href="#">Контакты</Navbar.Link>
+          <Navbar.Link href="/catalog">Каталог</Navbar.Link>
+          <Navbar.Link href="/company">Компания</Navbar.Link>
+          <Navbar.Link href="/contacts">Контакты</Navbar.Link>
         </Navbar.Content>
 
         <AuthGate fallback={<Login />}>

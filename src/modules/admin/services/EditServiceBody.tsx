@@ -1,18 +1,20 @@
 import { Button, Card, Input, Loading, Modal } from '@nextui-org/react';
+import { Box } from '~/components/helpers';
 import { useState } from 'react';
-import { EditorState, convertToRaw } from 'draft-js';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { EditorState, convertFromRaw, convertToRaw } from 'draft-js';
 import { EditText } from '~/components/EditText';
 import { useSelectImage } from '~/hooks/useSelectImage';
-import { Box } from '~/components/helpers';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { api } from '~/api';
 
-export const AddServicesBody = ({ close }: any) => {
+export const EditServiceBody = (props: any) => {
   const client = useQueryClient();
 
-  const [image, setImage] = useState<string | undefined>(undefined);
-  const [title, setTitle] = useState('');
-  const [editorState, onChange] = useState(() => EditorState.createEmpty());
+  const [image, setImage] = useState<string | undefined>(props.servi.picture);
+  const [title, setTitle] = useState(props.servi.name);
+  const [editorState, onChange] = useState(() =>
+    EditorState.createWithContent(convertFromRaw(JSON.parse(props.servi.content))),
+  );
 
   const { getInputProps, getRootProps } = useSelectImage({
     maxHeight: 800,
@@ -24,9 +26,9 @@ export const AddServicesBody = ({ close }: any) => {
     mutationFn: async () => {
       const raw = convertToRaw(editorState.getCurrentContent());
 
-      await api.services.create(title, image!, JSON.stringify(raw));
+      await api.services.update(props.servi.id, title, image!, JSON.stringify(raw));
       client.invalidateQueries({ queryKey: ['services'] });
-      return close();
+      return props.onClose();
     },
   });
 
@@ -54,7 +56,7 @@ export const AddServicesBody = ({ close }: any) => {
         </Box>
       </Modal.Body>
       <Modal.Footer>
-        <Button flat color="error" onClick={close}>
+        <Button flat color="error" onClick={props.onClose}>
           закрыть
         </Button>
         <Button disabled={isLoading} onClick={() => [mutate()]}>

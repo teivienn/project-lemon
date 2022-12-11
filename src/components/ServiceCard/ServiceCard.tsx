@@ -3,7 +3,7 @@ import { Box } from '../helpers';
 import './style.css';
 
 export const ServiceCard = (props: any) => (
-  <Box width={210} height={210} className="service-card" m={10}>
+  <Box width={210} height={210} className="service-card" m={10} onClick={props?.onClick}>
     <Box className="service-card-con">
       <Text
         b
@@ -11,7 +11,7 @@ export const ServiceCard = (props: any) => (
         css={{ width: '200px', textShadow: '0 0 2px #000' }}
         color="white"
       >
-        {props.name}fdsfsd fsd fsd fsd fsd fds fs dfs d
+        {props.name}
       </Text>
     </Box>
     <Image

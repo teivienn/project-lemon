@@ -1,17 +1,20 @@
-import { Dropdown, Navbar, Avatar, Loading } from '@nextui-org/react';
+import { Dropdown, Navbar, Avatar, Loading, Button, Badge } from '@nextui-org/react';
 import { useMutation } from '@tanstack/react-query';
 import { Key, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { api } from '../../../api';
 import { useStore } from '../../../lib/store';
+import { FiShoppingCart } from 'react-icons/fi';
+import { useBucket } from '~/lib/Bucket/BucketProvider';
 
 export const UserMenu = () => {
   const { profile, setProfile } = useStore();
   const navigate = useNavigate();
+  const { productIds, setVisible, clean } = useBucket();
 
   const { mutate } = useMutation({
     mutationFn: api.profile.logout,
-    onSuccess: () => setProfile(null),
+    onSuccess: () => [setProfile(null), clean()],
   });
 
   const onAction = (actionKey: Key) => {
@@ -56,6 +59,14 @@ export const UserMenu = () => {
         },
       }}
     >
+      <Badge color="error" content={productIds?.length || 0}>
+        <Button
+          auto
+          color={'#fffff' as any}
+          icon={<FiShoppingCart fill="currentColor" />}
+          onClick={() => setVisible(true)}
+        />
+      </Badge>
       {!profile ? (
         <Loading />
       ) : (
